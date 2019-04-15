@@ -3,13 +3,13 @@
 #include <string>
 using namespace std;
 
-Room::Room(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom)
+Room::Room() 
 {
 	this->items = new unordered_set<string>();
-	north = northRoom;
-	east = eastRoom;
-	south = southRoom;
-	west = westRoom;
+	north = NULL;
+	east = NULL;
+	south = NULL;
+	west = NULL;
 }
 
 Room::~Room()
@@ -25,6 +25,14 @@ void Room::addItem(string item)
 unordered_set<string> Room::getItems()
 {
 	return *items;
+}
+
+void Room::setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room* createWest) 
+{
+	north = createNorth;
+	east = createEast;
+	south = createSouth;
+	west = createWest;
 }
 
 void Room::moveNorth(Room** currentRoom) 

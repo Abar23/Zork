@@ -3,7 +3,7 @@
 #include "KyleRoom.h"
 using namespace std;
 
-KyleRoom::KyleRoom(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom) : Room(northRoom, eastRoom, southRoom, westRoom)
+KyleRoom::KyleRoom() : Room()
 {
 	areaDesc = "Default room description";
 	northDesc = "Default north description";

@@ -1,38 +1,39 @@
 #include <iostream>
 #include "Game.h"
-using namespace std;
+#include "KyleRoom.h"
 
 Game::Game()
 {
 	inventory = new Inventory();
 	controller = new CommandParser();
-
+	chosenPath = "";
 }
 
 Game::~Game()
 {
 	delete this->inventory;
 	delete this->controller;
+
+	
 }
 
-void Game::run()
+void Game::choosePath()
 {
-	string choice;
 	cout << "Welcome to the game. There are three paths. Choose one:  ";
-	getline(cin, choice);
+	getline(cin, chosenPath);
 
 	while (true) {
 
-		if (choice == "1")
+		if (chosenPath == "1")
 		{
-
+			Room *k = new KyleRoom(NULL, NULL, NULL, NULL);
 			break;
 		}
-		else if (choice == "2")
+		else if (chosenPath == "2")
 		{
 			break;
 		}
-		else if (choice == "3")
+		else if (chosenPath == "3")
 		{
 			break;
 		}
@@ -40,7 +41,14 @@ void Game::run()
 		{
 			cout << "You must enter only 1, 2, or 3." << endl;
 			cout << "Choice:  ";
-			getline(cin, choice);
+			getline(cin, chosenPath);
 		}
 	}
+}
+
+void Game::run()
+{
+
+
+
 }

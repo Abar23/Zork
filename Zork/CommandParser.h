@@ -14,8 +14,8 @@ public:
 	CommandParser();
 	~CommandParser();
 
-	void nextCommand(Room &);
-	void executeCommand(string command, Room &currentRoom, string item);
+	void nextCommand(Room *currentRoom);
+	void executeCommand(string command, Room *currentRoom, string item);
 };
 
 #endif

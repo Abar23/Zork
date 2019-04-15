@@ -22,7 +22,7 @@ CommandParser::~CommandParser()
 	delete this->recognizedCommands;
 }
 
-void CommandParser::nextCommand(Room &currentRoom)
+void CommandParser::nextCommand(Room *currentRoom)
 {
 	string command = string();
 	getline(cin, command);
@@ -61,11 +61,11 @@ void CommandParser::nextCommand(Room &currentRoom)
 	}
 }
 
-void CommandParser::executeCommand(string command, Room &currentRoom, string item)
+void CommandParser::executeCommand(string command, Room *currentRoom, string item)
 {
 	if (command == "north")
 	{
-		//currentRoom.moveNorth(currentRoom);
+		currentRoom->moveNorth(&currentRoom);
 	}
 	else if (command == "south")
 	{
@@ -81,7 +81,7 @@ void CommandParser::executeCommand(string command, Room &currentRoom, string ite
 	}
 	else if (command == "grab" || command == "take")
 	{
-		if (currentRoom.getItems().find(item) != currentRoom.getItems().end())
+		if (currentRoom->getItems().find(item) != currentRoom->getItems().end())
 		{
 
 		}

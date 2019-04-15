@@ -10,10 +10,14 @@ CommandParser::CommandParser()
 {
 	shouldQuit = false;
 	this->recognizedCommands = new unordered_set<string>();
-	recognizedCommands->insert("north");
-	recognizedCommands->insert("south");
-	recognizedCommands->insert("east");
-	recognizedCommands->insert("west");
+	recognizedCommands->insert("go north");
+	recognizedCommands->insert("go south");
+	recognizedCommands->insert("go east");
+	recognizedCommands->insert("go west");
+	recognizedCommands->insert("look north");
+	recognizedCommands->insert("look south");
+	recognizedCommands->insert("look east");
+	recognizedCommands->insert("look west");
 	recognizedCommands->insert("help");
 	recognizedCommands->insert("look");
 	recognizedCommands->insert("inventory");
@@ -28,7 +32,9 @@ CommandParser::~CommandParser()
 void CommandParser::nextCommand(Room *currentRoom, Inventory *in)
 {
 	string command = string();
+	cout << endl << " > ";
 	getline(cin, command);
+	cout << endl;
 	transform(command.begin(), command.end(), command.begin(), ::tolower);  // change string to all lowercase
 
 	if (recognizedCommands->find(command) != recognizedCommands->end())
@@ -40,52 +46,79 @@ void CommandParser::nextCommand(Room *currentRoom, Inventory *in)
 		stringstream ss(command);
 		string buf = string();
 		bool grabbing = false;
+		bool grabbed = false;
 
 		while (ss >> buf)
 		{
 			if (grabbing)
 			{
 				executeCommand("grab", currentRoom, buf, in);
-			}
-
-			if (buf == "grab" || buf == "take")
-			{
-				grabbing = true;
+				grabbed = true;
 			}
 			else
 			{
-				cout << "I do not recognize this command!" << endl;
-				break;
+				if (buf == "grab" || buf == "take")
+				{
+					grabbing = true;
+				}
+				else
+				{
+					cout << "I do not recognize this command!" << endl;
+					grabbed = true;
+					break;
+				}
 			}
 		}
+
+		if (!grabbed)
+		{
+			cout << "You didn't specify what to grab." << endl;
+		}
+
 	}
 }
 	
 
 void CommandParser::executeCommand(string command, Room *currentRoom, string item, Inventory *in)
 {
-	if (command == "north")
+	if (command == "go north")
 	{
 		currentRoom->moveNorth(&currentRoom);
 	}
-	else if (command == "south")
+	else if (command == "go south")
 	{
 		currentRoom->moveSouth(&currentRoom);
 	}
-	else if (command == "east")
+	else if (command == "go east")
 	{
-		currentRoom->moveSouth(&currentRoom);
+		currentRoom->moveEast(&currentRoom);
 	}
-	else if (command == "west")
+	else if (command == "go west")
 	{
-		currentRoom->moveSouth(&currentRoom);
+		currentRoom->moveWest(&currentRoom);
+	}
+	else if (command == "look north")
+	{
+		currentRoom->outputNorth();
+	}
+	else if (command == "look south")
+	{
+		currentRoom->outputSouth();
+	}
+	else if (command == "look east")
+	{
+		currentRoom->outputEast();
+	}
+	else if (command == "look west")
+	{
+		currentRoom->outputWest();
 	}
 	else if (command == "grab" || command == "take")
 	{
-		if (currentRoom->getItems().find(item) != currentRoom->getItems().end())
+		if (currentRoom->getItems()->find(item) != currentRoom->getItems()->end())
 		{
 			in->addToInventory(item);
-			currentRoom->getItems().erase(item);
+			currentRoom->getItems()->erase(item);
 		}
 		else
 		{
@@ -94,14 +127,14 @@ void CommandParser::executeCommand(string command, Room *currentRoom, string ite
 	}
 	else if (command == "look")
 	{
-		if (currentRoom->getItems().size() == 0) 
+		if (currentRoom->getItems()->size() == 0) 
 		{
 			cout << "You look around the room and see no items." << endl;
 		}
 		else
 		{
 			cout << "You look around the room and see the following items: " << endl;
-			for (pair<string, string> element : currentRoom->getItems())
+			for (pair<string, string> element : *currentRoom->getItems())
 			{
 				cout << element.first << "  ::  " << element.second << endl;
 			}
@@ -118,7 +151,6 @@ void CommandParser::executeCommand(string command, Room *currentRoom, string ite
 	}
 	else if (command == "inventory")
 	{
-		cout << "Current inventory: " << endl;
 		in->displayInventory();
 	}
 	else if (command == "quit")

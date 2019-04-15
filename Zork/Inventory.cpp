@@ -14,11 +14,11 @@ void Inventory::displayInventory()
 {
 	if (this->inventory.size() == 0)
 	{
-		std::cout << std::endl << "There are no items in your inventory!" << std::endl;
+		std::cout << "There are no items in your inventory!" << std::endl;
 	}
 	else
 	{
-		std::cout << std::endl << "Current Inventory: " << std::endl;
+		std::cout << "Current Inventory: " << std::endl;
 		for (auto pair : this->inventory)
 		{
 			std::cout << pair.first << ": " << pair.second << std::endl;

@@ -22,9 +22,9 @@ void Room::addItem(string item, string desc)
 	items->insert(make_pair(item, desc));
 }
 
-unordered_map<string, string> Room::getItems()
+unordered_map<string, string> * Room::getItems()
 {
-	return *items;
+	return items;
 }
 
 void Room::setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room* createWest) 

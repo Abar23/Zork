@@ -27,7 +27,7 @@ public:
 	~Room();
 
 	void addItem(string item, string desc);
-	unordered_map<string, string> getItems();
+	unordered_map<string, string> * getItems();
 	void setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room* createWest);
 	void moveNorth(Room** currentRoom);
 	void moveEast(Room** currentRoom);

@@ -29,7 +29,6 @@ void Game::choosePath()
 
 		if (chosenPath == "1")
 		{
-			Room *k = new KyleRoom();
 			break;
 		}
 		else if (chosenPath == "2")
@@ -51,7 +50,8 @@ void Game::choosePath()
 
 void Game::run()
 {
-
-
-
+	while (controller->getShouldQuit())
+	{
+		controller->nextCommand(currentRoom, inventory);
+	}
 }

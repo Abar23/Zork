@@ -8,6 +8,7 @@ using namespace std;
 
 CommandParser::CommandParser()
 {
+	shouldQuit = false;
 	this->recognizedCommands = new unordered_set<string>();
 	recognizedCommands->insert("north");
 	recognizedCommands->insert("south");
@@ -15,6 +16,8 @@ CommandParser::CommandParser()
 	recognizedCommands->insert("west");
 	recognizedCommands->insert("help");
 	recognizedCommands->insert("look");
+	recognizedCommands->insert("inventory");
+	recognizedCommands->insert("quit");
 }
 
 CommandParser::~CommandParser()
@@ -91,7 +94,7 @@ void CommandParser::executeCommand(string command, Room *currentRoom, string ite
 	}
 	else if (command == "look")
 	{
-		if (currentRoom->getItems().size == 0) 
+		if (currentRoom->getItems().size() == 0) 
 		{
 			cout << "You look around the room and see no items." << endl;
 		}
@@ -113,4 +116,18 @@ void CommandParser::executeCommand(string command, Room *currentRoom, string ite
 		}
 		cout << "grab <item name>    or     take <item name>" << endl;
 	}
+	else if (command == "inventory")
+	{
+		cout << "Current inventory: " << endl;
+		in->displayInventory();
+	}
+	else if (command == "quit")
+	{
+		shouldQuit = true;
+	}
+}
+
+bool CommandParser::getShouldQuit()
+{
+	return shouldQuit;
 }

@@ -4,15 +4,10 @@
 
 Game::Game()
 {
-	inventory = new Inventory();
-	controller = new CommandParser();
 }
 
 Game::~Game()
-{
-	delete this->inventory;
-	delete this->controller;
-	
+{	
 	for (auto &room : gameRooms)
 	{
 		delete room;
@@ -29,14 +24,35 @@ void Game::choosePath()
 
 		if (chosenPath == "1")
 		{
+			// Rooms for Kyle's map
+			// 1. Create rooms (MUST BE POINTERS)
+
+			// 2. Set connections between rooms
+
+			// 3. Add all rooms to the gameRooms vector
+
 			break;
 		}
 		else if (chosenPath == "2")
 		{
+			// Rooms for Anthony's map
+			// 1. Create rooms (MUST BE POINTERS)
+
+			// 2. Set connections between rooms
+
+			// 3. Add all rooms to the gameRooms vector
+
 			break;
 		}
 		else if (chosenPath == "3")
 		{
+			// Rooms for Dan's map
+			// 1. Create rooms (MUST BE POINTERS)
+
+			// 2. Set connections between rooms
+
+			// 3. Add all rooms to the gameRooms vector
+
 			break;
 		}
 		else
@@ -50,8 +66,8 @@ void Game::choosePath()
 
 void Game::run()
 {
-	while (controller->getShouldQuit())
+	while (controller.getShouldQuit())
 	{
-		controller->nextCommand(currentRoom, inventory);
+		controller.nextCommand(currentRoom, &inventory);
 	}
 }

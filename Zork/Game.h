@@ -12,8 +12,8 @@ using namespace std;
 class Game
 {
 private:
-	Inventory *inventory;
-	CommandParser *controller;
+	Inventory inventory;
+	CommandParser controller;
 	Room *currentRoom;
 	vector<Room *> gameRooms;
 

@@ -7,7 +7,7 @@
 class Inventory
 {
 private:
-	std::unordered_map<std::string, int> *inventory;
+	std::unordered_map<std::string, int> inventory;
 
 public:
 	Inventory();

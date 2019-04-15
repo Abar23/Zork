@@ -1,15 +1,13 @@
-#pragma once
-#ifndef KYLEROOM_H
-#define KYLEROOM_H
+#ifndef MAINROOM_H
+#define MAINROOM_H
 
-#include <string>
 #include "Room.h"
-using namespace std;
 
-class KyleRoom : public Room
+class MainRoom : public Room
 {
 public:
-	KyleRoom();
+	MainRoom();
+	~MainRoom();
 
 	void describeRoom();
 	void outputNorth();

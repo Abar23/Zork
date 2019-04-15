@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Game.h"
-#include "KyleRoom.h"
+#include "MainRoom.h"
 
 Game::Game()
 {
@@ -37,10 +37,16 @@ void Game::choosePath()
 		{
 			// Rooms for Anthony's map
 			// 1. Create rooms (MUST BE POINTERS)
+			currentRoom = new MainRoom();
+			Room * anotherRoom = new MainRoom();
 
 			// 2. Set connections between rooms
+			currentRoom->setRooms(anotherRoom, NULL, NULL, NULL);
+			anotherRoom->setRooms(NULL, NULL, currentRoom, NULL);
 
 			// 3. Add all rooms to the gameRooms vector
+			this->gameRooms.push_back(anotherRoom);
+			this->gameRooms.push_back(currentRoom);
 
 			break;
 		}
@@ -66,10 +72,9 @@ void Game::choosePath()
 
 void Game::run()
 {
-	currentRoom = new KyleRoom();
 	currentRoom->describeRoom();
 	while (!controller.getShouldQuit())
 	{
-		controller.nextCommand(currentRoom, &inventory);
+		controller.nextCommand(&currentRoom, &inventory);
 	}
 }

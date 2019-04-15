@@ -29,7 +29,7 @@ CommandParser::~CommandParser()
 	delete this->recognizedCommands;
 }
 
-void CommandParser::nextCommand(Room *currentRoom, Inventory *in)
+void CommandParser::nextCommand(Room **currentRoom, Inventory *in)
 {
 	string command = string();
 	cout << endl << " > ";
@@ -79,46 +79,46 @@ void CommandParser::nextCommand(Room *currentRoom, Inventory *in)
 }
 	
 
-void CommandParser::executeCommand(string command, Room *currentRoom, string item, Inventory *in)
+void CommandParser::executeCommand(string command, Room **currentRoom, string item, Inventory *in)
 {
 	if (command == "go north")
 	{
-		currentRoom->moveNorth(&currentRoom, in);
+		(*currentRoom)->moveNorth(currentRoom, in);
 	}
 	else if (command == "go south")
 	{
-		currentRoom->moveSouth(&currentRoom, in);
+		(*currentRoom)->moveSouth(currentRoom, in);
 	}
 	else if (command == "go east")
 	{
-		currentRoom->moveEast(&currentRoom, in);
+		(*currentRoom)->moveEast(currentRoom, in);
 	}
 	else if (command == "go west")
 	{
-		currentRoom->moveWest(&currentRoom, in);
+		(*currentRoom)->moveWest(currentRoom, in);
 	}
 	else if (command == "look north")
 	{
-		currentRoom->outputNorth();
+		(*currentRoom)->outputNorth();
 	}
 	else if (command == "look south")
 	{
-		currentRoom->outputSouth();
+		(*currentRoom)->outputSouth();
 	}
 	else if (command == "look east")
 	{
-		currentRoom->outputEast();
+		(*currentRoom)->outputEast();
 	}
 	else if (command == "look west")
 	{
-		currentRoom->outputWest();
+		(*currentRoom)->outputWest();
 	}
 	else if (command == "grab" || command == "take")
 	{
-		if (currentRoom->getItems()->find(item) != currentRoom->getItems()->end())
+		if ((*currentRoom)->getItems()->find(item) != (*currentRoom)->getItems()->end())
 		{
 			in->addToInventory(item);
-			currentRoom->getItems()->erase(item);
+			(*currentRoom)->getItems()->erase(item);
 		}
 		else
 		{
@@ -127,14 +127,14 @@ void CommandParser::executeCommand(string command, Room *currentRoom, string ite
 	}
 	else if (command == "look")
 	{
-		if (currentRoom->getItems()->size() == 0) 
+		if ((*currentRoom)->getItems()->size() == 0)
 		{
 			cout << "You look around the room and see no items." << endl;
 		}
 		else
 		{
 			cout << "You look around the room and see the following items: " << endl;
-			for (pair<string, string> element : *currentRoom->getItems())
+			for (pair<string, string> element : *(*currentRoom)->getItems())
 			{
 				cout << element.first << "  ::  " << element.second << endl;
 			}

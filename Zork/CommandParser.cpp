@@ -13,8 +13,8 @@ CommandParser::CommandParser()
 	recognizedCommands->insert("south");
 	recognizedCommands->insert("east");
 	recognizedCommands->insert("west");
-	recognizedCommands->insert("grab");
-	recognizedCommands->insert("take");
+	recognizedCommands->insert("help");
+	recognizedCommands->insert("look");
 }
 
 CommandParser::~CommandParser()
@@ -26,40 +26,38 @@ void CommandParser::nextCommand(Room *currentRoom, Inventory *in)
 {
 	string command = string();
 	getline(cin, command);
-	stringstream ss(command);
-	string buf = string();
-	bool recognized = true;
-	bool grabbing = false;
+	transform(command.begin(), command.end(), command.begin(), ::tolower);  // change string to all lowercase
 
-	// Iterate through input by each word separated by spaces
-	while (ss >> buf && recognized)
+	if (recognizedCommands->find(command) != recognizedCommands->end())
 	{
-		transform(buf.begin(), buf.end(), buf.begin(), ::tolower);  // change string to all lowercase
-		if (grabbing)
-		{
-			executeCommand("grab", currentRoom, buf, in);
-		}
+		executeCommand(command, currentRoom, string(), in);
+	}
+	else
+	{
+		stringstream ss(command);
+		string buf = string();
+		bool grabbing = false;
 
-		// If the command is recognized
-		if (recognizedCommands->find(buf) != recognizedCommands->end())
+		while (ss >> buf)
 		{
-			if (buf == "grab" || buf == "take") 
+			if (grabbing)
+			{
+				executeCommand("grab", currentRoom, buf, in);
+			}
+
+			if (buf == "grab" || buf == "take")
 			{
 				grabbing = true;
 			}
 			else
 			{
-				executeCommand(buf, currentRoom, string(), in);
+				cout << "I do not recognize this command!" << endl;
+				break;
 			}
 		}
-		else
-		{
-			recognized = false;
-			cout << "I do not recognize this command!" << endl;
-		}
-
 	}
 }
+	
 
 void CommandParser::executeCommand(string command, Room *currentRoom, string item, Inventory *in)
 {
@@ -86,5 +84,33 @@ void CommandParser::executeCommand(string command, Room *currentRoom, string ite
 			in->addToInventory(item);
 			currentRoom->getItems().erase(item);
 		}
+		else
+		{
+			cout << "There is no " << item << " in this room." << endl;
+		}
+	}
+	else if (command == "look")
+	{
+		if (currentRoom->getItems().size == 0) 
+		{
+			cout << "You look around the room and see no items." << endl;
+		}
+		else
+		{
+			cout << "You look around the room and see the following items: " << endl;
+			for (pair<string, string> element : currentRoom->getItems())
+			{
+				cout << element.first << "  ::  " << element.second << endl;
+			}
+		}
+	}
+	else if (command == "help")
+	{
+		cout << "You can enter the following commands: " << endl;
+		for (string c : *recognizedCommands) 
+		{
+			cout << c << endl;
+		}
+		cout << "grab <item name>    or     take <item name>" << endl;
 	}
 }

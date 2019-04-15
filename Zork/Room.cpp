@@ -5,7 +5,7 @@ using namespace std;
 
 Room::Room() 
 {
-	this->items = new unordered_set<string>();
+	this->items = new unordered_map<string, string>();
 	north = NULL;
 	east = NULL;
 	south = NULL;
@@ -17,12 +17,12 @@ Room::~Room()
 	delete this->items;
 }
 
-void Room::addItem(string item)
+void Room::addItem(string item, string desc)
 {
-	items->insert(item);
+	items->insert(make_pair(item, desc));
 }
 
-unordered_set<string> Room::getItems()
+unordered_map<string, string> Room::getItems()
 {
 	return *items;
 }
@@ -37,32 +37,55 @@ void Room::setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room
 
 void Room::moveNorth(Room** currentRoom)
 {
-	if (north == NULL)
+	if (north != NULL)
+	{
 		*currentRoom = north;
+		cout << "You go north." << endl;
+	}
 	else
+	{
 		cout << "You can't go north!" << endl;
+	}
 }
 
 void Room::moveEast(Room** currentRoom)
 {
-	if (east == NULL)
+	if (east != NULL)
+	{
 		*currentRoom = east;
+		cout << "You go east." << endl;
+	}
 	else
+	{
 		cout << "You can't go east!" << endl;
+	}
+		
 }
 
 void Room::moveSouth(Room** currentRoom)
 {
-	if (south == NULL)
+	if (south != NULL)
+	{
 		*currentRoom = south;
+		cout << "You go south." << endl;
+	}		
 	else
+	{
 		cout << "You can't go south!" << endl;
+	}
+		
 }
 
 void Room::moveWest(Room** currentRoom)
 {
-	if (west == NULL)
+	if (west != NULL)
+	{
 		*currentRoom = west;
+		cout << "You go west." << endl;
+	}
 	else
+	{
 		cout << "You can't go west!" << endl;
+	}
+		
 }

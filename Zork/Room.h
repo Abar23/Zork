@@ -5,7 +5,7 @@
 #ifndef ROOM_H
 #define ROOM_H
 
-#include <unordered_set>
+#include <unordered_map>
 #include <string>
 using namespace std;
 
@@ -16,13 +16,13 @@ protected:
 	Room* east;
 	Room* south;
 	Room* west;
-	unordered_set<string> *items;
+	unordered_map<string, string> *items;
 public:
 	Room();
 	~Room();
 
-	void addItem(string item);
-	unordered_set<string> getItems();
+	void addItem(string item, string desc);
+	unordered_map<string, string> getItems();
 	void setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room* createWest);
 	void moveNorth(Room** currentRoom);
 	void moveEast(Room** currentRoom);

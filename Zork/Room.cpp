@@ -44,11 +44,11 @@ void Room::moveNorth(Room** currentRoom, Inventory *in)
 {
 	if (in->hasItem(northLock.second))
 	{
-		northLock = make_pair(true, northLock.second);
+		northLock = make_pair(false, northLock.second);
 		in->removeInventory(northLock.second);
 	}
 
-	if ((north != NULL) && northLock.first)
+	if ((north != NULL) && !northLock.first)
 	{
 		*currentRoom = north;
 		cout << "You go north." << endl;
@@ -68,7 +68,7 @@ void Room::moveEast(Room** currentRoom, Inventory *in)
 {
 	if (in->hasItem(eastLock.second))
 	{
-		eastLock = make_pair(true, eastLock.second);
+		eastLock = make_pair(false, eastLock.second);
 		in->removeInventory(eastLock.second);
 	}
 
@@ -93,7 +93,7 @@ void Room::moveSouth(Room** currentRoom, Inventory *in)
 {
 	if (in->hasItem(southLock.second))
 	{
-		southLock = make_pair(true, southLock.second);
+		southLock = make_pair(false, southLock.second);
 		in->removeInventory(southLock.second);
 	}
 
@@ -118,7 +118,7 @@ void Room::moveWest(Room** currentRoom, Inventory *in)
 {
 	if (in->hasItem(westLock.second))
 	{
-		westLock = make_pair(true, westLock.second);
+		westLock = make_pair(false, westLock.second);
 		in->removeInventory(westLock.second);
 	}
 

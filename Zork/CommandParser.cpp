@@ -117,6 +117,7 @@ void CommandParser::executeCommand(string command, Room **currentRoom, string it
 	{
 		if ((*currentRoom)->getItems()->find(item) != (*currentRoom)->getItems()->end())
 		{
+			cout << "You pick up the " << item << " and add it to your inventory." << endl;
 			in->addToInventory(item);
 			(*currentRoom)->getItems()->erase(item);
 		}
@@ -136,18 +137,18 @@ void CommandParser::executeCommand(string command, Room **currentRoom, string it
 			cout << "You look around the room and see the following items: " << endl;
 			for (pair<string, string> element : *(*currentRoom)->getItems())
 			{
-				cout << element.first << "  ::  " << element.second << endl;
+				cout << element.first << "  -  " << element.second << endl;
 			}
 		}
 	}
 	else if (command == "help")
 	{
 		cout << "You can enter the following commands: " << endl;
-		for (string c : *recognizedCommands) 
-		{
-			cout << c << endl;
-		}
-		cout << "grab <item name>    or     take <item name>" << endl;
+		cout << "look" << endl;
+		cout << "look north/south/east/west" << endl;
+		cout << "go north/south/east/west" << endl;
+		cout << "grab <item name>  or  take <item name>" << endl;
+		cout << "help" << endl << "inventory" << endl << "quit" << endl;
 	}
 	else if (command == "inventory")
 	{

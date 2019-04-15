@@ -8,12 +8,6 @@ using namespace std;
 
 class KyleRoom : public Room
 {
-protected:
-	string areaDesc;
-	string northDesc;
-	string eastDesc;
-	string southDesc;
-	string westDesc;
 public:
 	KyleRoom();
 

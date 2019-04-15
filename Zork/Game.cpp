@@ -66,7 +66,9 @@ void Game::choosePath()
 
 void Game::run()
 {
-	while (controller.getShouldQuit())
+	currentRoom = new KyleRoom();
+	currentRoom->describeRoom();
+	while (!controller.getShouldQuit())
 	{
 		controller.nextCommand(currentRoom, &inventory);
 	}

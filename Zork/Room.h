@@ -16,6 +16,11 @@ protected:
 	Room* east;
 	Room* south;
 	Room* west;
+	string areaDesc;
+	string northDesc;
+	string eastDesc;
+	string southDesc;
+	string westDesc;
 	unordered_map<string, string> *items;
 public:
 	Room();
@@ -28,6 +33,7 @@ public:
 	void moveEast(Room** currentRoom);
 	void moveSouth(Room** currentRoom);
 	void moveWest(Room** currentRoom);
+	virtual void describeRoom() = 0;
 	virtual void outputNorth() = 0;
 	virtual void outputEast() = 0;
 	virtual void outputSouth() = 0;

@@ -41,6 +41,7 @@ void Room::moveNorth(Room** currentRoom)
 	{
 		*currentRoom = north;
 		cout << "You go north." << endl;
+		describeRoom();
 	}
 	else
 	{
@@ -54,6 +55,7 @@ void Room::moveEast(Room** currentRoom)
 	{
 		*currentRoom = east;
 		cout << "You go east." << endl;
+		describeRoom();
 	}
 	else
 	{
@@ -68,6 +70,7 @@ void Room::moveSouth(Room** currentRoom)
 	{
 		*currentRoom = south;
 		cout << "You go south." << endl;
+		describeRoom();
 	}		
 	else
 	{
@@ -82,6 +85,7 @@ void Room::moveWest(Room** currentRoom)
 	{
 		*currentRoom = west;
 		cout << "You go west." << endl;
+		describeRoom();
 	}
 	else
 	{

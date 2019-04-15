@@ -12,7 +12,7 @@ Inventory::~Inventory()
 
 void Inventory::displayInventory()
 {
-	if (this-inventory.size() == 0)
+	if (this->inventory.size() == 0)
 	{
 		std::cout << std::endl << "There are no items in your inventory!" << std::endl;
 	}

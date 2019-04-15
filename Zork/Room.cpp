@@ -35,22 +35,34 @@ void Room::setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room
 	west = createWest;
 }
 
-void Room::moveNorth(Room** currentRoom) 
+void Room::moveNorth(Room** currentRoom)
 {
-	*currentRoom = north;
+	if (north == NULL)
+		*currentRoom = north;
+	else
+		cout << "You can't go north!" << endl;
 }
 
-void Room::moveEast(Room** currentRoom) 
+void Room::moveEast(Room** currentRoom)
 {
-	*currentRoom = east;
+	if (east == NULL)
+		*currentRoom = east;
+	else
+		cout << "You can't go east!" << endl;
 }
 
-void Room::moveSouth(Room** currentRoom) 
+void Room::moveSouth(Room** currentRoom)
 {
-	*currentRoom = south;
+	if (south == NULL)
+		*currentRoom = south;
+	else
+		cout << "You can't go south!" << endl;
 }
 
-void Room::moveWest(Room** currentRoom) 
+void Room::moveWest(Room** currentRoom)
 {
-	*currentRoom = west;
+	if (west == NULL)
+		*currentRoom = west;
+	else
+		cout << "You can't go west!" << endl;
 }

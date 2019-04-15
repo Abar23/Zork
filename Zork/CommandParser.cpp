@@ -22,7 +22,7 @@ CommandParser::~CommandParser()
 	delete this->recognizedCommands;
 }
 
-void CommandParser::nextCommand(Room *currentRoom)
+void CommandParser::nextCommand(Room *currentRoom, Inventory *in)
 {
 	string command = string();
 	getline(cin, command);
@@ -37,7 +37,7 @@ void CommandParser::nextCommand(Room *currentRoom)
 		transform(buf.begin(), buf.end(), buf.begin(), ::tolower);  // change string to all lowercase
 		if (grabbing)
 		{
-			executeCommand("grab", currentRoom, buf);
+			executeCommand("grab", currentRoom, buf, in);
 		}
 
 		// If the command is recognized
@@ -49,7 +49,7 @@ void CommandParser::nextCommand(Room *currentRoom)
 			}
 			else
 			{
-				executeCommand(buf, currentRoom, string());
+				executeCommand(buf, currentRoom, string(), in);
 			}
 		}
 		else
@@ -61,7 +61,7 @@ void CommandParser::nextCommand(Room *currentRoom)
 	}
 }
 
-void CommandParser::executeCommand(string command, Room *currentRoom, string item)
+void CommandParser::executeCommand(string command, Room *currentRoom, string item, Inventory *in)
 {
 	if (command == "north")
 	{
@@ -83,7 +83,8 @@ void CommandParser::executeCommand(string command, Room *currentRoom, string ite
 	{
 		if (currentRoom->getItems().find(item) != currentRoom->getItems().end())
 		{
-
+			in->addToInventory(item);
+			currentRoom->getItems().erase(item);
 		}
 	}
 }

@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_set>
 #include "Room.h"
+#include "Inventory.h"
 using namespace std;
 
 class CommandParser 
@@ -14,8 +15,8 @@ public:
 	CommandParser();
 	~CommandParser();
 
-	void nextCommand(Room *currentRoom);
-	void executeCommand(string command, Room *currentRoom, string item);
+	void nextCommand(Room *currentRoom, Inventory *in);
+	void executeCommand(string command, Room *currentRoom, string item, Inventory *in);
 };
 
 #endif

@@ -5,14 +5,24 @@
 #ifndef ROOM_H
 #define ROOM_H
 
-class Room {
-private:
+#include <unordered_set>
+#include <string>
+using namespace std;
+
+class Room 
+{
+protected:
 	Room* north;
 	Room* east;
 	Room* south;
 	Room* west;
+	unordered_set<string> *items;
 public:
 	Room();
+	~Room();
+
+	void addItem(string item);
+	unordered_set<string> getItems();
 	void setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room* createWest);
 	void moveNorth(Room** currentRoom);
 	void moveEast(Room** currentRoom);

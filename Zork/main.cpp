@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Room.h"
 #include "Inventory.h"
+#include "KyleRoom.h"
 
 using namespace std;
 
@@ -17,6 +18,8 @@ int main()
 	in.removeInventory("key");
 
 	in.displayInventory();
+
+	KyleRoom room1 = KyleRoom();
 
 	return 0;
 }

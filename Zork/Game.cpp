@@ -6,19 +6,22 @@ Game::Game()
 {
 	inventory = new Inventory();
 	controller = new CommandParser();
-	chosenPath = "";
 }
 
 Game::~Game()
 {
 	delete this->inventory;
 	delete this->controller;
-
 	
+	for (auto &room : gameRooms)
+	{
+		delete room;
+	}
 }
 
 void Game::choosePath()
 {
+	string chosenPath;
 	cout << "Welcome to the game. There are three paths. Choose one:  ";
 	getline(cin, chosenPath);
 
@@ -26,7 +29,7 @@ void Game::choosePath()
 
 		if (chosenPath == "1")
 		{
-			Room *k = new KyleRoom(NULL, NULL, NULL, NULL);
+			Room *k = new KyleRoom();
 			break;
 		}
 		else if (chosenPath == "2")

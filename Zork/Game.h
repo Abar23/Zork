@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <string>
+#include <vector>
 #include "Inventory.h"
 #include "CommandParser.h"
 #include "Room.h"
@@ -14,7 +15,7 @@ private:
 	Inventory *inventory;
 	CommandParser *controller;
 	Room *currentRoom;
-	string chosenPath;
+	vector<Room *> gameRooms;
 
 public:
 	Game();

@@ -17,8 +17,9 @@ Game::~Game()
 void Game::choosePath()
 {
 	string chosenPath;
-	cout << "Welcome to the game. There are three paths. Choose one:  ";
+	cout << "Welcome to the game. There are three paths. Enter 1, 2, or 3:  ";
 	getline(cin, chosenPath);
+	cout << endl;
 
 	while (true) {
 

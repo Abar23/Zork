@@ -83,19 +83,19 @@ void CommandParser::executeCommand(string command, Room *currentRoom, string ite
 {
 	if (command == "go north")
 	{
-		currentRoom->moveNorth(&currentRoom);
+		currentRoom->moveNorth(&currentRoom, in);
 	}
 	else if (command == "go south")
 	{
-		currentRoom->moveSouth(&currentRoom);
+		currentRoom->moveSouth(&currentRoom, in);
 	}
 	else if (command == "go east")
 	{
-		currentRoom->moveEast(&currentRoom);
+		currentRoom->moveEast(&currentRoom, in);
 	}
 	else if (command == "go west")
 	{
-		currentRoom->moveWest(&currentRoom);
+		currentRoom->moveWest(&currentRoom, in);
 	}
 	else if (command == "look north")
 	{

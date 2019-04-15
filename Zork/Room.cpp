@@ -44,6 +44,7 @@ void Room::moveNorth(Room** currentRoom, Inventory *in)
 {
 	if (in->hasItem(northLock.second))
 	{
+		cout << "You used the " << northLock.second << " to open the way forward." << endl;
 		northLock = make_pair(false, northLock.second);
 		in->removeInventory(northLock.second);
 	}
@@ -68,6 +69,7 @@ void Room::moveEast(Room** currentRoom, Inventory *in)
 {
 	if (in->hasItem(eastLock.second))
 	{
+		cout << "You used the " << eastLock.second << " to open the way forward." << endl;
 		eastLock = make_pair(false, eastLock.second);
 		in->removeInventory(eastLock.second);
 	}
@@ -93,6 +95,7 @@ void Room::moveSouth(Room** currentRoom, Inventory *in)
 {
 	if (in->hasItem(southLock.second))
 	{
+		cout << "You used the " << southLock.second << " to open the way forward." << endl;
 		southLock = make_pair(false, southLock.second);
 		in->removeInventory(southLock.second);
 	}
@@ -118,6 +121,7 @@ void Room::moveWest(Room** currentRoom, Inventory *in)
 {
 	if (in->hasItem(westLock.second))
 	{
+		cout << "You used the " << westLock.second << " to open the way forward." << endl;
 		westLock = make_pair(false, westLock.second);
 		in->removeInventory(westLock.second);
 	}

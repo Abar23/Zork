@@ -18,12 +18,11 @@ protected:
 	Room* west;
 	unordered_set<string> *items;
 public:
-	Room();
+	Room(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom);
 	~Room();
 
 	void addItem(string item);
 	unordered_set<string> getItems();
-	void setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room* createWest);
 	void moveNorth(Room** currentRoom);
 	void moveEast(Room** currentRoom);
 	void moveSouth(Room** currentRoom);

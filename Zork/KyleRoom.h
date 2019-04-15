@@ -15,7 +15,7 @@ protected:
 	string southDesc;
 	string westDesc;
 public:
-	KyleRoom();
+	KyleRoom(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom);
 
 	void describeRoom();
 	void outputNorth();

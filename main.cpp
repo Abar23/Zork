@@ -1,25 +1,22 @@
-#include "Room.h"
 #include <iostream>
+#include "Room.h"
+#include "Inventory.h"
+
 using namespace std;
 
-int main() {
-	Room test;
-	Room testConnect;
-	test.setRooms(NULL, NULL, &testConnect, NULL);
-	testConnect.setRooms(&test, NULL, NULL, NULL);
-	test.outputNorth();
-	test.outputEast();
-	test.outputSouth();
-	test.outputWest();
+int main()
+{
+	Inventory in;
 
-	cout << endl << "Current Room Test: " << endl;
-	Room* currentRoom;
-	currentRoom = &testConnect;
-	currentRoom->outputNorth();
+	in.displayInventory();
 
-	currentRoom->moveNorth(&currentRoom);
-	currentRoom->outputNorth();
+	in.addToInventory("key");
+	in.addToInventory("key");
+	std::cout << in.hasItem("key") << std::endl;
+	in.removeInventory("key");
+	in.removeInventory("key");
 
+	in.displayInventory();
 
 	return 0;
 }

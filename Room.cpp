@@ -26,35 +26,3 @@ void Room::moveSouth(Room** currentRoom) {
 void Room::moveWest(Room** currentRoom) {
 	*currentRoom = west;
 }
-void Room::outputNorth() {
-	if (north != NULL) {
-		cout << "There is a door to the north." << endl;
-	}
-	else {
-		cout << "There is a wall to the north." << endl;
-	}
-}
-void Room::outputEast() {
-	if (east != NULL) {
-		cout << "There is a door to the east." << endl;
-	}
-	else {
-		cout << "There is a wall to the east." << endl;
-	}
-}
-void Room::outputSouth() {
-	if (south != NULL) {
-		cout << "There is a door to the south." << endl;
-	}
-	else {
-		cout << "There is a wall to the south." << endl;
-	}
-}
-void Room::outputWest() {
-	if (west != NULL) {
-		cout << "There is a door to the west." << endl;
-	}
-	else {
-		cout << "There is a wall to the west." << endl;
-	}
-}

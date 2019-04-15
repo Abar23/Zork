@@ -18,9 +18,9 @@ public:
 	void moveEast(Room** currentRoom);
 	void moveSouth(Room** currentRoom);
 	void moveWest(Room** currentRoom);
-	void outputNorth();
-	void outputEast();
-	void outputSouth();
-	void outputWest();
+	virtual void outputNorth() = 0;
+	virtual void outputEast() = 0;
+	virtual void outputSouth() = 0;
+	virtual void outputWest() = 0;
 };
 #endif

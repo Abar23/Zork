@@ -30,7 +30,10 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainRoom.cpp">
+    <ClCompile Include="MazeCellRoom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MazeStartRoom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CustomRoom.cpp">
@@ -50,7 +53,10 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainRoom.h">
+    <ClInclude Include="MazeCellRoom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MazeStartRoom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomRoom.h">

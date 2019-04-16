@@ -52,7 +52,7 @@ void Room::moveNorth(Room** currentRoom, Inventory *in)
 	if ((north != NULL) && !northLock.first)
 	{
 		*currentRoom = north;
-		cout << "You go north." << endl;
+		cout << "You go north. \n" << endl;
 		(*currentRoom)->describeRoom();
 	}
 	else if (northLock.first)
@@ -77,7 +77,7 @@ void Room::moveEast(Room** currentRoom, Inventory *in)
 	if ((east != NULL) && !eastLock.first)
 	{
 		*currentRoom = east;
-		cout << "You go east." << endl;
+		cout << "You go east. \n" << endl;
 		(*currentRoom)->describeRoom();
 	}
 	else if (eastLock.first)
@@ -95,7 +95,7 @@ void Room::moveSouth(Room** currentRoom, Inventory *in)
 {
 	if (in->hasItem(southLock.second))
 	{
-		cout << "You used the " << southLock.second << " to open the way forward." << endl;
+		cout << "You used the " << southLock.second << " to open the way forward. \n" << endl;
 		southLock = make_pair(false, southLock.second);
 		in->removeInventory(southLock.second);
 	}
@@ -103,7 +103,7 @@ void Room::moveSouth(Room** currentRoom, Inventory *in)
 	if ((south != NULL) && !southLock.first)
 	{
 		*currentRoom = south;
-		cout << "You go south." << endl;
+		cout << "You go south. \n" << endl;
 		(*currentRoom)->describeRoom();
 	}
 	else if (southLock.first)
@@ -129,7 +129,7 @@ void Room::moveWest(Room** currentRoom, Inventory *in)
 	if ((west != NULL) && !westLock.first)
 	{
 		*currentRoom = west;
-		cout << "You go west." << endl;
+		cout << "You go west. \n" << endl;
 		(*currentRoom)->describeRoom();
 	}
 	else if (westLock.first)

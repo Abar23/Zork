@@ -23,7 +23,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainRoom.cpp" />
     <ClCompile Include="MazeCellRoom.cpp" />
     <ClCompile Include="MazeStartRoom.cpp" />
     <ClCompile Include="Room.cpp" />
@@ -32,7 +31,6 @@
     <ClInclude Include="CommandParser.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Inventory.h" />
-    <ClInclude Include="MainRoom.h" />
     <ClInclude Include="MazeCellRoom.h" />
     <ClInclude Include="MazeStartRoom.h" />
     <ClInclude Include="Room.h" />

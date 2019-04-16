@@ -1,13 +1,13 @@
-#ifndef MAZESTARTROOM_H
-#define MAZESTARTROOM_H
+#ifndef MAZEENDROOM_H
+#define MAZEENDROOM_H
 
 #include "Room.h"
 
-class MazeStartRoom : public Room
+class MazeEndRoom : public Room
 {
 public:
-	MazeStartRoom();
-	~MazeStartRoom();
+	MazeEndRoom();
+	~MazeEndRoom();
 
 	void describeRoom();
 	void outputNorth();

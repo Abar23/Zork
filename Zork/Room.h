@@ -51,19 +51,19 @@ public:
 	virtual void outputSouth() = 0;
 	virtual void outputWest() = 0;
 
-	virtual void setAreaDesc(string) = 0;
-	virtual void setNorthDesc(string) = 0;
-	virtual void setEastDesc(string) = 0;
-	virtual void setSouthDesc(string) = 0;
-	virtual void setWestDesc(string) = 0;
-	virtual void setNorthDescLocked(string) = 0;
-	virtual void setEastDescLocked(string) = 0;
-	virtual void setSouthDescLocked(string) = 0;
-	virtual void setWestDescLocked(string) = 0;
+	void setAreaDesc(string s) { areaDesc = s; };
+	void setNorthDesc(string s) { northDesc = s; };
+	void setEastDesc(string s) { eastDesc = s; };
+	void setSouthDesc(string s) { southDesc = s; };
+	void setWestDesc(string s) { westDesc = s; };
+	void setNorthDescLocked(string s) { northDescLocked = s; };
+	void setEastDescLocked(string s) { eastDescLocked = s; };
+	void setSouthDescLocked(string s) { southDescLocked = s; };
+	void setWestDescLocked(string s) { westDescLocked = s; };
 
-	virtual void setNorthLock(pair<bool, string>) = 0;
-	virtual void setEastLock(pair<bool, string>) = 0;
-	virtual void setSouthLock(pair<bool, string>) = 0;
-	virtual void setWestLock(pair<bool, string>) = 0;
+	void setNorthLock(pair<bool, string> p) { northLock = p; };
+	void setEastLock(pair<bool, string> p) { eastLock = p; };
+	void setSouthLock(pair<bool, string> p) { southLock = p; };
+	void setWestLock(pair<bool, string> p) { westLock = p; };
 };
 #endif

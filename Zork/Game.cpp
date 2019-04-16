@@ -3,6 +3,7 @@
 #include "CustomRoom.h"
 #include "MazeStartRoom.h"
 #include "MazeCellRoom.h"
+#include "MazeEndRoom.h"
 
 Game::Game()
 {
@@ -40,6 +41,7 @@ void Game::choosePath()
 			Room *mazeCell2 = new MazeCellRoom(true, false);
 			Room *mazeCell3 = new MazeCellRoom(false, false);
 			Room *mazeCell4 = new MazeCellRoom(false, true);
+			Room *mazeEnd = new MazeEndRoom();
 
 
 			// 2. Set connections between rooms
@@ -47,7 +49,8 @@ void Game::choosePath()
 			mazeCell1->setRooms(mazeCell3, mazeCell2, currentRoom, mazeCell2);
 			mazeCell2->setRooms(mazeCell3, mazeCell1, currentRoom, mazeCell1);
 			mazeCell3->setRooms(mazeCell2, currentRoom, mazeCell2, mazeCell4);
-			mazeCell4->setRooms(NULL, mazeCell3, currentRoom, mazeCell1);
+			mazeCell4->setRooms(mazeEnd, mazeCell3, currentRoom, mazeCell1);
+			mazeEnd->setRooms(NULL, NULL, NULL, NULL);
 
 			// 3. Add all rooms to the gameRooms vector
 			this->gameRooms.push_back(currentRoom);
@@ -55,6 +58,7 @@ void Game::choosePath()
 			this->gameRooms.push_back(mazeCell2);
 			this->gameRooms.push_back(mazeCell3);
 			this->gameRooms.push_back(mazeCell4);
+			this->gameRooms.push_back(mazeEnd);
 
 
 			break;

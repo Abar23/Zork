@@ -25,6 +25,7 @@
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MazeCellRoom.cpp" />
+    <ClCompile Include="MazeEndRoom.cpp" />
     <ClCompile Include="MazeStartRoom.cpp" />
     <ClCompile Include="Room.cpp" />
   </ItemGroup>
@@ -34,6 +35,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="MazeCellRoom.h" />
+    <ClInclude Include="MazeEndRoom.h" />
     <ClInclude Include="MazeStartRoom.h" />
     <ClInclude Include="Room.h" />
   </ItemGroup>

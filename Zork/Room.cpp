@@ -95,7 +95,7 @@ void Room::moveSouth(Room** currentRoom, Inventory *in)
 {
 	if (in->hasItem(southLock.second))
 	{
-		cout << "You used the " << southLock.second << " to open the way forward." << endl;
+		cout << "You used the " << southLock.second << " to open the way forward. \n" << endl;
 		southLock = make_pair(false, southLock.second);
 		in->removeInventory(southLock.second);
 	}

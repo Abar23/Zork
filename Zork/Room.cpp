@@ -15,6 +15,7 @@ Room::Room()
 	southLock = make_pair(false, string());
 	eastLock = make_pair(false, string());
 	westLock = make_pair(false, string());
+	this->hasReachedEnd = false;
 }
 
 Room::~Room()
@@ -140,4 +141,14 @@ void Room::moveWest(Room** currentRoom, Inventory *in)
 	{
 		cout << "There is no path to the west!" << endl;
 	}		
+}
+
+void Room::setHasReachedEndFlag(bool isEnd)
+{
+	this->hasReachedEnd = isEnd;
+}
+
+bool Room::getHasReachedEndFlag()
+{
+	return this->hasReachedEnd;
 }

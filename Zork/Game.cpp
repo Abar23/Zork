@@ -85,6 +85,11 @@ void Game::run()
 	while (!controller.getShouldQuit())
 	{
 		controller.nextCommand(&currentRoom, &inventory);
+
+		if (currentRoom->getHasReachedEndFlag())
+		{
+			controller.setShouldQuit(true);
+		}
 	}
 }
 
@@ -163,6 +168,7 @@ void Game::setupFirstPath()
 
 	Room *room9 = new CustomRoom();
 	room9->setAreaDesc("Congratulations! The jailor accepts the password and hands you $200. You are now free to go. THE END");
+	room9->setHasReachedEndFlag(true);
 	//controller.setShouldQuit(true);
 
 	// 2. Set connections between rooms

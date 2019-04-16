@@ -13,6 +13,7 @@ using namespace std;
 class Room 
 {
 protected:
+	bool hasReachedEnd;
 	Room* north;
 	Room* east;
 	Room* south;
@@ -42,6 +43,8 @@ public:
 	void moveEast(Room** currentRoom, Inventory *in);
 	void moveSouth(Room** currentRoom, Inventory *in);
 	void moveWest(Room** currentRoom, Inventory *in);
+	void setHasReachedEndFlag(bool isEnd);
+	bool getHasReachedEndFlag();
 	virtual void describeRoom() = 0;
 	virtual void outputNorth() = 0;
 	virtual void outputEast() = 0;

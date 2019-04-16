@@ -19,6 +19,7 @@ public:
 	void nextCommand(Room **currentRoom, Inventory *in);
 	void executeCommand(string command, Room **currentRoom, string item, Inventory *in);
 	bool getShouldQuit();
+	void setShouldQuit(bool);
 };
 
 #endif

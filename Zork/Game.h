@@ -23,6 +23,7 @@ public:
 
 	void choosePath();
 	void run();
+	void setupFirstPath();
 };
 
 #endif

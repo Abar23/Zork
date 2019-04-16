@@ -18,71 +18,6 @@ CustomRoom::~CustomRoom()
 {
 }
 
-void CustomRoom::setAreaDesc(string s)
-{
-	this->areaDesc = s;
-}
-
-void CustomRoom::setNorthDesc(string s)
-{
-	this->northDesc = s;
-}
-
-void CustomRoom::setEastDesc(string s)
-{
-	this->eastDesc = s;
-}
-
-void CustomRoom::setSouthDesc(string s)
-{
-	this->southDesc = s;
-}
-
-void CustomRoom::setWestDesc(string s)
-{
-	this->westDesc = s;
-}
-
-void CustomRoom::setNorthDescLocked(string s)
-{
-	this->northDescLocked = s;
-}
-
-void CustomRoom::setEastDescLocked(string s)
-{
-	this->eastDescLocked = s;
-}
-
-void CustomRoom::setSouthDescLocked(string s)
-{
-	this->southDescLocked = s;
-}
-
-void CustomRoom::setWestDescLocked(string s)
-{
-	this->westDescLocked = s;
-}
-
-void CustomRoom::setNorthLock(pair<bool, string> p)
-{
-	this->northLock = p;
-}
-
-void CustomRoom::setEastLock(pair<bool, string> p)
-{
-	this->eastLock = p;
-}
-
-void CustomRoom::setSouthLock(pair<bool, string> p)
-{
-	this->southLock = p;
-}
-
-void CustomRoom::setWestLock(pair<bool, string> p)
-{
-	this->westLock = p;
-}
-
 void CustomRoom::describeRoom()
 {
 	cout << this->areaDesc << endl;
@@ -126,7 +61,7 @@ void CustomRoom::outputSouth()
 
 void CustomRoom::outputWest()
 {
-	if (this->southLock.first == true)
+	if (this->westLock.first == true)
 	{
 		cout << westDescLocked << endl;
 	}

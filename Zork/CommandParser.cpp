@@ -164,3 +164,8 @@ bool CommandParser::getShouldQuit()
 {
 	return shouldQuit;
 }
+
+void CommandParser::setShouldQuit(bool b)
+{
+	shouldQuit = b;
+}

@@ -22,6 +22,10 @@ protected:
 	string eastDesc;
 	string southDesc;
 	string westDesc;
+	string northDescLocked;
+	string eastDescLocked;
+	string southDescLocked;
+	string westDescLocked;
 	pair<bool, string> northLock;
 	pair<bool, string> southLock;
 	pair<bool, string> eastLock;
@@ -43,5 +47,20 @@ public:
 	virtual void outputEast() = 0;
 	virtual void outputSouth() = 0;
 	virtual void outputWest() = 0;
+
+	virtual void setAreaDesc(string) = 0;
+	virtual void setNorthDesc(string) = 0;
+	virtual void setEastDesc(string) = 0;
+	virtual void setSouthDesc(string) = 0;
+	virtual void setWestDesc(string) = 0;
+	virtual void setNorthDescLocked(string) = 0;
+	virtual void setEastDescLocked(string) = 0;
+	virtual void setSouthDescLocked(string) = 0;
+	virtual void setWestDescLocked(string) = 0;
+
+	virtual void setNorthLock(pair<bool, string>) = 0;
+	virtual void setEastLock(pair<bool, string>) = 0;
+	virtual void setSouthLock(pair<bool, string>) = 0;
+	virtual void setWestLock(pair<bool, string>) = 0;
 };
 #endif

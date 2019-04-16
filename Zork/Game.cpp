@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Game.h"
-#include "MainRoom.h"
+#include "MazeStartRoom.h"
+#include "MazeCellRoom.h"
 
 Game::Game()
 {
@@ -38,16 +39,27 @@ void Game::choosePath()
 		{
 			// Rooms for Anthony's map
 			// 1. Create rooms (MUST BE POINTERS)
-			currentRoom = new MainRoom();
-			Room * anotherRoom = new MainRoom();
+			currentRoom = new MazeStartRoom();
+			Room *mazeCell1 = new MazeCellRoom(false, false);
+			Room *mazeCell2 = new MazeCellRoom(true, false);
+			Room *mazeCell3 = new MazeCellRoom(false, false);
+			Room *mazeCell4 = new MazeCellRoom(false, true);
+
 
 			// 2. Set connections between rooms
-			currentRoom->setRooms(anotherRoom, NULL, NULL, NULL);
-			anotherRoom->setRooms(NULL, NULL, currentRoom, NULL);
+			currentRoom->setRooms(mazeCell1, NULL, NULL, NULL);
+			mazeCell1->setRooms(mazeCell3, mazeCell2, currentRoom, mazeCell2);
+			mazeCell2->setRooms(mazeCell3, mazeCell1, currentRoom, mazeCell1);
+			mazeCell3->setRooms(mazeCell2, currentRoom, mazeCell2, mazeCell4);
+			mazeCell4->setRooms(NULL, mazeCell3, currentRoom, mazeCell1);
 
 			// 3. Add all rooms to the gameRooms vector
-			this->gameRooms.push_back(anotherRoom);
 			this->gameRooms.push_back(currentRoom);
+			this->gameRooms.push_back(mazeCell1);
+			this->gameRooms.push_back(mazeCell2);
+			this->gameRooms.push_back(mazeCell3);
+			this->gameRooms.push_back(mazeCell4);
+
 
 			break;
 		}

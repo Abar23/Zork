@@ -11,6 +11,7 @@ Game::Game()
 
 Game::~Game()
 {	
+	// destroy every room used
 	for (auto &room : gameRooms)
 	{
 		delete room;
@@ -60,7 +61,6 @@ void Game::choosePath()
 			this->gameRooms.push_back(mazeCell4);
 			this->gameRooms.push_back(mazeEnd);
 
-
 			break;
 		}
 		else if (chosenPath == "3")
@@ -69,7 +69,7 @@ void Game::choosePath()
 			this->setupThirdPath();
 			break;
 		}
-		else
+		else     // user did not input a vaild path choice
 		{
 			cout << "You must enter only 1, 2, or 3." << endl;
 			cout << "Choice:  ";
@@ -83,8 +83,10 @@ void Game::run()
 	currentRoom->describeRoom();
 	while (!controller.getShouldQuit())
 	{
+		// get and execute the next command from the user
 		controller.nextCommand(&currentRoom, &inventory);
 
+		// the game is over, the program will exit
 		if (currentRoom->getHasReachedEndFlag())
 		{
 			controller.setShouldQuit(true);

@@ -1,3 +1,9 @@
+// Function implementation for the class which allows user input.
+// This class also executes the user's command.
+// File: CommandParser.cpp
+// Created by: Kyle Lambert
+// Created on: April 15, 2019
+
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -10,6 +16,8 @@ CommandParser::CommandParser()
 {
 	shouldQuit = false;
 	this->recognizedCommands = new unordered_set<string>();
+
+	// add all the default commands
 	recognizedCommands->insert("go north");
 	recognizedCommands->insert("go south");
 	recognizedCommands->insert("go east");
@@ -37,11 +45,12 @@ void CommandParser::nextCommand(Room **currentRoom, Inventory *in)
 	cout << endl;
 	transform(command.begin(), command.end(), command.begin(), ::tolower);  // change string to all lowercase
 
+	// if the user's input was an already recognized command
 	if (recognizedCommands->find(command) != recognizedCommands->end())
 	{
 		executeCommand(command, currentRoom, string(), in);
 	}
-	else
+	else  // otherwise, it was a grab/take command or an invalid command
 	{
 		stringstream ss(command);
 		string buf = string();
@@ -50,18 +59,18 @@ void CommandParser::nextCommand(Room **currentRoom, Inventory *in)
 
 		while (ss >> buf)
 		{
-			if (grabbing)
+			if (grabbing)	// the first word was grab/take, so the second word is the item to take
 			{
-				executeCommand("grab", currentRoom, buf, in);
+				executeCommand("grab", currentRoom, buf, in);	// pick up the item
 				grabbed = true;
 			}
 			else
 			{
-				if (buf == "grab" || buf == "take")
+				if (buf == "grab" || buf == "take")	// the input was a grab/take command
 				{
 					grabbing = true;
 				}
-				else
+				else  // the input was invalid
 				{
 					cout << "I do not recognize this command!" << endl;
 					grabbed = true;
@@ -70,7 +79,7 @@ void CommandParser::nextCommand(Room **currentRoom, Inventory *in)
 			}
 		}
 
-		if (!grabbed)
+		if (!grabbed)	// only grab/take was input, no item was specified
 		{
 			cout << "You didn't specify what to grab." << endl;
 		}
@@ -81,7 +90,7 @@ void CommandParser::nextCommand(Room **currentRoom, Inventory *in)
 
 void CommandParser::executeCommand(string command, Room **currentRoom, string item, Inventory *in)
 {
-	if (command == "go north")
+	if (command == "go north")  // movement commands
 	{
 		(*currentRoom)->moveNorth(currentRoom, in);
 	}
@@ -97,7 +106,7 @@ void CommandParser::executeCommand(string command, Room **currentRoom, string it
 	{
 		(*currentRoom)->moveWest(currentRoom, in);
 	}
-	else if (command == "look north")
+	else if (command == "look north")  // examine direction commands
 	{
 		(*currentRoom)->outputNorth();
 	}
@@ -113,35 +122,37 @@ void CommandParser::executeCommand(string command, Room **currentRoom, string it
 	{
 		(*currentRoom)->outputWest();
 	}
-	else if (command == "grab" || command == "take")
+	else if (command == "grab" || command == "take")  // try to pick up the item
 	{
+		// check if the desired item is in the current room
 		if ((*currentRoom)->getItems()->find(item) != (*currentRoom)->getItems()->end())
 		{
 			cout << "You pick up the " << item << " and add it to your inventory." << endl;
 			in->addToInventory(item);
-			(*currentRoom)->getItems()->erase(item);
+			(*currentRoom)->getItems()->erase(item);	// remove the item from the room
 		}
-		else
+		else  // the desired item is not in the room
 		{
 			cout << "There is no " << item << " in this room." << endl;
 		}
 	}
-	else if (command == "look")
+	else if (command == "look")		// examine the room for items to pick up
 	{
-		if ((*currentRoom)->getItems()->size() == 0)
+		if ((*currentRoom)->getItems()->size() == 0)	// no items in the room
 		{
 			cout << "You look around the room and see no items." << endl;
 		}
 		else
 		{
 			cout << "You look around the room and see the following items: " << endl;
+			// list every item in the room and its description
 			for (pair<string, string> element : *(*currentRoom)->getItems())
 			{
 				cout << element.first << "  -  " << element.second << endl;
 			}
 		}
 	}
-	else if (command == "help")
+	else if (command == "help")		// displays available commands to the user
 	{
 		cout << "You can enter the following commands: " << endl;
 		cout << "look" << endl;

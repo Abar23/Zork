@@ -34,7 +34,7 @@ protected:
 	unordered_map<string, string> *items;
 public:
 	Room();
-	~Room();
+	virtual ~Room();
 
 	void addItem(string item, string desc);
 	unordered_map<string, string> * getItems();

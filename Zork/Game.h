@@ -24,6 +24,7 @@ public:
 	void choosePath();
 	void run();
 	void setupFirstPath();
+	void setupThirdPath();
 };
 
 #endif

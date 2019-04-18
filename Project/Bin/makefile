@@ -26,7 +26,7 @@ $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	@echo "Compiled "$<""
 
 .PHONY: clean
-clean: clean
+clean: 
 	@$(rm) $(BINDIR)/$(TARGET)
 	@$(rm) $(OBJECTS)
 	@echo "All clean!"

@@ -1,0 +1,194 @@
+Script started on Thu 18 Apr 2019 02:29:45 AM EDT
+Script started, file is Project.txt
+[greer.220@cse-std1 Project]$ cd Bin
+[greer.220@cse-std1 Bin]$ ls
+makefile
+[greer.220@cse-std1 Bin]$ make
+Compiled ../Source/CommandParser.cpp
+Compiled ../Source/Game.cpp
+Compiled ../Source/MazeCellRoom.cpp
+Compiled ../Source/MazeStartRoom.cpp
+Compiled ../Source/Room.cpp
+Compiled ../Source/CustomRoom.cpp
+Compiled ../Source/MazeEndRoom.cpp
+Compiled ../Source/Inventory.cpp
+Compiled ../Source/main.cpp
+Linked!
+[greer.220@cse-std1 Bin]$ zork
+Welcome to the game. There are three paths. Enter 1, 2, or 3:  3
+
+You have finally arrived at the castle's gates.  Why were you here?  You check your pockets and read the note again: 'HELP WANTED - DRAGON SLAYER' You know you need this job to get your adventuring career back on track, so you enter the castle.
+This giant room is filled with tapestries and golden items.  A fitting entrance for a castle.
+
+ > help
+
+You can enter the following commands: 
+look
+look north/south/east/west
+go north/south/east/west
+grab <item name>  or  take <item name>
+help
+inventory
+quit
+
+ > look
+
+You look around the room and see no items.
+
+ > look north
+
+There is a wooden door to the north.
+
+ > look south
+
+The castle's gate is to the south.
+
+ > look west
+
+There is a solid stone wall to the west, with several tables with glimmering golden cups.
+
+ > look east
+
+There is a solid stone wall to the east, covered by a tapestry.
+
+ > go north
+
+You go north. 
+
+This is a standard stone hallway, connecting other parts of the castle.
+
+ > go west
+
+You go west. 
+
+This room appears to be an old servant's quarters, with cots and clothes covering the floor.
+
+ > go east
+
+You go east. 
+
+This is a standard stone hallway, connecting other parts of the castle.
+
+ > go south
+
+You go south. 
+
+This giant room is filled with tapestries and golden items.  A fitting entrance for a castle.
+
+ > go north
+
+You go north. 
+
+This is a standard stone hallway, connecting other parts of the castle.
+
+ > go east
+
+You go east. 
+
+This room is an old library, filled to the brim with dusty old books.
+
+ > look
+
+You look around the room and see the following items: 
+book  -  A mysterious book is poking out of the southern bookshelves.
+
+ > take book
+
+You pick up the book and add it to your inventory.
+
+ > inventory
+
+Current Inventory: 
+book: 1
+
+ > go west
+
+You go west. 
+
+This is a standard stone hallway, connecting other parts of the castle.
+
+ > go north
+
+You used the book to open the way forward.
+You go north. 
+
+This is yet another stone hallway.
+
+ > go north
+
+You go north. 
+
+Another stone hallway?  How big is this place?
+
+ > look north
+
+There is a wooden door to the north with the words "WARNING - DRAGON AHEAD" printed on it.
+
+ > go west
+
+You go west. 
+
+This is a magnificent armory, filled with shiny swords and plenty of armor.
+
+ > look 
+
+You look around the room and see the following items: 
+sword  -  A magnificent sword is in the middle of the room, with an almost magical aura to it.
+
+ > grab sword
+
+You pick up the sword and add it to your inventory.
+
+ > go east
+
+You go east. 
+
+Another stone hallway?  How big is this place?
+
+ > go north
+
+You used the sword to open the way forward.
+You go north. 
+
+The dragon awaits you.  You give a ferocious yell and charge towards him, holding your magic sword above your head.  He too yells, for he is scared and confused.  In his self defense, he blows a huge fireball directly at you, burning you to a crisp instantly.  THE END
+Total time elapsed: 1 minutes and 38 seconds
+[greer.220@cse-std1 Bin]$ zork
+Welcome to the game. There are three paths. Enter 1, 2, or 3:  1
+
+You wake up on a dusty old mattress in an empty jail cell. Where are you? Why can't you remember anything?
+Try to escape!
+
+This room is empty except for an old mattress and a small table.
+
+ > help
+
+You can enter the following commands: 
+look
+look north/south/east/west
+go north/south/east/west
+grab <item name>  or  take <item name>
+help
+inventory
+quit
+
+ > quit
+
+Total time elapsed: 0 minutes and 7 seconds
+[greer.220@cse-std1 Bin]$ ls
+makefile  zork
+[greer.220@cse-std1 Bin]$ cd ../Obj
+[greer.220@cse-std1 Obj]$ ls
+CommandParser.o  CustomRoom.o  Game.o  Inventory.o  main.o  MazeCellRoom.o  MazeEndRoom.o  MazeStartRoom.o  Room.o
+[greer.220@cse-std1 Obj]$ cd ../Bin
+[greer.220@cse-std1 Bin]$ make clean
+All clean!
+[greer.220@cse-std1 Bin]$ ls
+makefile
+[greer.220@cse-std1 Bin]$ cd ../Bin
+[greer.220@cse-std1 Bin]$ cd ../Obj
+[greer.220@cse-std1 Obj]$ ls
+[greer.220@cse-std1 Obj]$ exit
+exit
+Script done, file is Project.txt
+
+Script done on Thu 18 Apr 2019 02:32:17 AM EDT

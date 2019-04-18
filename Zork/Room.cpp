@@ -43,13 +43,15 @@ void Room::setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room
 
 void Room::moveNorth(Room** currentRoom, Inventory *in)
 {
+	// Unlock/unblock the path when the player has the item when they move north
 	if (in->hasItem(northLock.second))
 	{
 		cout << "You used the " << northLock.second << " to open the way forward." << endl;
 		northLock = make_pair(false, northLock.second);
 		in->removeInventory(northLock.second);
 	}
-
+	
+	// Move the player north when north pointer is not null and it is not locked/blocked
 	if ((north != NULL) && !northLock.first)
 	{
 		*currentRoom = north;
@@ -68,6 +70,7 @@ void Room::moveNorth(Room** currentRoom, Inventory *in)
 
 void Room::moveEast(Room** currentRoom, Inventory *in)
 {
+	// Unlock/unblock the path when the player has the item when they move east
 	if (in->hasItem(eastLock.second))
 	{
 		cout << "You used the " << eastLock.second << " to open the way forward." << endl;
@@ -75,6 +78,7 @@ void Room::moveEast(Room** currentRoom, Inventory *in)
 		in->removeInventory(eastLock.second);
 	}
 
+	// Move the player north when east pointer is not null and it is not locked/blocked
 	if ((east != NULL) && !eastLock.first)
 	{
 		*currentRoom = east;
@@ -94,6 +98,7 @@ void Room::moveEast(Room** currentRoom, Inventory *in)
 
 void Room::moveSouth(Room** currentRoom, Inventory *in)
 {
+	// Unlock/unblock the path when the player has the item when they move south
 	if (in->hasItem(southLock.second))
 	{
 		cout << "You used the " << southLock.second << " to open the way forward. \n" << endl;
@@ -101,6 +106,7 @@ void Room::moveSouth(Room** currentRoom, Inventory *in)
 		in->removeInventory(southLock.second);
 	}
 
+	// Move the player south when north pointer is not null and it is not locked/blocked
 	if ((south != NULL) && !southLock.first)
 	{
 		*currentRoom = south;
@@ -120,6 +126,7 @@ void Room::moveSouth(Room** currentRoom, Inventory *in)
 
 void Room::moveWest(Room** currentRoom, Inventory *in)
 {
+	// Unlock/unblock the path when the player has the item when they move west
 	if (in->hasItem(westLock.second))
 	{
 		cout << "You used the " << westLock.second << " to open the way forward." << endl;
@@ -127,6 +134,7 @@ void Room::moveWest(Room** currentRoom, Inventory *in)
 		in->removeInventory(westLock.second);
 	}
 
+	// Move the player west when north pointer is not null and it is not locked/blocked
 	if ((west != NULL) && !westLock.first)
 	{
 		*currentRoom = west;

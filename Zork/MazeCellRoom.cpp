@@ -2,6 +2,7 @@
 
 MazeCellRoom::MazeCellRoom(bool addKey, bool addExitDoor)
 {
+	// Set properties of the room
 	if (addKey)
 	{
 		this->addItem("key", "A mysterious key rusted and convered in moss. It looks like it could be used for some sort of gate.");

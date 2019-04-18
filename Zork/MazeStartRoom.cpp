@@ -3,6 +3,7 @@
 
 MazeStartRoom::MazeStartRoom()
 {
+	// Set properties of the room
 	this->areaDesc = "You are in a maze with extremely tall hedges. To your west, east, and south are impenetrable hedge walls. To the \n"
 					  "north, you see an opening the in hedges along with a curious sign next to it. The sign reads: \n"
 					  "\t \"To traverse this treacherous maze, you must follow the path: ghkma - kbzam - ni - pxlm\" \n";

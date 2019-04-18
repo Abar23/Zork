@@ -14,10 +14,14 @@ class Room
 {
 protected:
 	bool hasReachedEnd;
+
+	// Rooms for each direction
 	Room* north;
 	Room* east;
 	Room* south;
 	Room* west;
+
+	// Descriptions for each direction
 	string areaDesc;
 	string northDesc;
 	string eastDesc;
@@ -27,10 +31,14 @@ protected:
 	string eastDescLocked;
 	string southDescLocked;
 	string westDescLocked;
+
+	// Locks for each direction, if needed
 	pair<bool, string> northLock;
 	pair<bool, string> southLock;
 	pair<bool, string> eastLock;
 	pair<bool, string> westLock;
+
+	// Items in the room
 	unordered_map<string, string> *items;
 
 public:

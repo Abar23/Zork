@@ -1,9 +1,15 @@
+// Room.cpp file
+// Author: Daniel Greer
+// Created: 4/5/19
+// Updated: 4/18/19
+
 #include "../Include/Room.h"
 #include "../Include/Inventory.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
+// Create a new room object with no connections to other rooms
 Room::Room() 
 {
 	this->items = new unordered_map<string, string>();
@@ -23,16 +29,20 @@ Room::~Room()
 	delete this->items;
 }
 
+
+// Add an item to a room, with a name and description
 void Room::addItem(string item, string desc)
 {
 	items->insert(make_pair(item, desc));
 }
 
+// Display the items currently in the room
 unordered_map<string, string> * Room::getItems()
 {
 	return items;
 }
 
+// Connect the room to other rooms, with either a pointer to a room or NULL to signify a wall
 void Room::setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room* createWest) 
 {
 	north = createNorth;
@@ -41,6 +51,7 @@ void Room::setRooms(Room* createNorth, Room* createEast, Room* createSouth, Room
 	west = createWest;
 }
 
+// Move the player to the north by changing currentRoom to the north room
 void Room::moveNorth(Room** currentRoom, Inventory *in)
 {
 	// Unlock/unblock the path when the player has the item when they move north
@@ -68,6 +79,7 @@ void Room::moveNorth(Room** currentRoom, Inventory *in)
 	}
 }
 
+// Move the player to the east by changing currentRoom to the east room
 void Room::moveEast(Room** currentRoom, Inventory *in)
 {
 	// Unlock/unblock the path when the player has the item when they move east
@@ -96,6 +108,7 @@ void Room::moveEast(Room** currentRoom, Inventory *in)
 		
 }
 
+// Move the player to the south by changing currentRoom to the south room
 void Room::moveSouth(Room** currentRoom, Inventory *in)
 {
 	// Unlock/unblock the path when the player has the item when they move south
@@ -124,6 +137,7 @@ void Room::moveSouth(Room** currentRoom, Inventory *in)
 		
 }
 
+// Move the player to the west by changing currentRoom to the south room
 void Room::moveWest(Room** currentRoom, Inventory *in)
 {
 	// Unlock/unblock the path when the player has the item when they move west
@@ -151,11 +165,13 @@ void Room::moveWest(Room** currentRoom, Inventory *in)
 	}		
 }
 
+// Determine the player has reached the end of the path
 void Room::setHasReachedEndFlag(bool isEnd)
 {
 	this->hasReachedEnd = isEnd;
 }
 
+// Report whether the player has reached the end of the path or not
 bool Room::getHasReachedEndFlag()
 {
 	return this->hasReachedEnd;
